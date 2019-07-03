@@ -54,7 +54,8 @@
             <div class="toDoDiv">
                 <ul class="list-group">
                     {% for todo in todos %}
-                    <form action="./deleteTodo/" method="GET">
+                    {% if todo.isDone == False %}
+                    <form action="./doneTodo/" method="GET">
                         <div class="input-group" name='todo1'>
                             <li class="list-group-item">{{ todo.content }}</li>
                             <input type="hidden" id="todoNum" name="todoNum" value="{{ todo.id }}"></input>
@@ -63,6 +64,8 @@
                             </span>
                         </div>
                     </form>
+                    {% else %}
+                    {% endif %}
                     {% endfor %}
                 </ul>
             </div>
